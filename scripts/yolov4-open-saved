@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ -d "$HOME/Workspace/yolov4/darknet/Snapshot" ]]
+then
+	nautilus -w "$HOME/Workspace/yolov4/darknet/Snapshot"
+fi
+
+

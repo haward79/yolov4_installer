@@ -38,6 +38,9 @@ For more information, please reference to *Install section*.
         ./4_usage.bash
 
 # Changelog
+- 08/07 2021
+    1. Add new scripts to install script.
+
 - 07/27 2021
     1. First commit
 

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+devices=$(v4l2-ctl --list-devices 2>&1 | grep 'Intel(R) RealSense(TM) Depth Ca')
+
+if [[ "$devices" == '' ]]
+then
+	echo -e 'Default device NOT found !\n'
+else
+	echo 'Default device found :'
+	echo -e "  $devices\n"
+
+	cd "/home/$USER/Workspace/yolov4/darknet"
+	
+	if [[ $? -eq 0 ]]
+	then
+		python3 main.py --cam_index 4 --output_filename auto
+	else
+		echo "Can NOT change working directory to /home/$USER/Workspace/yolov4/darknet"
+		echo 'Please install yolov4 in the default directory.'
+	fi
+		
+fi
+
+

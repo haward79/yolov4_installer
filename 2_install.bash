@@ -50,13 +50,35 @@ else
 	exit 1
 fi
 
+
 echo '> make darknet'
 make -j "$numCores"
 
 echo '> Download pre-trained module'
 wget 'https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights'
 
+
 echo '> Copy main.py'
-cp "$owd/main.py" .
+cp "$owd/scripts/main.py" .
+
+
+echo '> Create Snapshot directory for main.py'
+mkdir "Snapshot"
+
+
+echo '> Copy global script'
+
+if [[ ! -d "$HOME/Scripts" ]]
+then
+	echo 'Directory for storing user scripts NOT found !'
+	echo 'Please copy the scripts to the user script file by yourself.'
+	exit 0
+fi
+
+cp "$owd/scripts/yolov4-realtime" "$HOME/Scripts/"
+cp "$owd/scripts/yolov4-open-saved" "$HOME/Scripts/"
+
+chmod u+x "$HOME/Scripts/yolov4-realtime"
+chmod u+x "$HOME/Scripts/yolov4-open-saved"
 
 
