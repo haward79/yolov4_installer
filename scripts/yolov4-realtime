@@ -1,6 +1,18 @@
 #!/bin/bash
 
-devices=$(v4l2-ctl --list-devices 2>&1 | grep 'Intel(R) RealSense(TM) Depth Ca')
+export v4l2_status=$(which v4l2-ctl)
+
+if [[ "$v4l2_status" == '' ]]
+then
+	echo 'Command v4l2-ctl NOT found.'
+	echo ''
+	echo 'You can install it with'
+	echo '$ sudo apt install v4l-utils'
+	echo ''
+	exit 1
+fi
+
+export devices=$(v4l2-ctl --list-devices 2>&1 | grep 'Intel(R) RealSense(TM) Depth Ca')
 
 if [[ "$devices" == '' ]]
 then

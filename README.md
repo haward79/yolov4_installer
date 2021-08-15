@@ -38,6 +38,9 @@ For more information, please reference to *Install section*.
         ./4_usage.bash
 
 # Changelog
+- 08/16 2021
+    1. Add v4l-ctl checks before executing in scripts/yolov4-realtime.
+
 - 08/07 2021
     1. Add new scripts to install script.
 
